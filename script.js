@@ -9,6 +9,8 @@ const weatherIcon = document.querySelector(".weather-icon");
 // Function for the main task (getting the data from API and displaying it)
 
 async function checkWeather(city){
+
+    
     const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
     if(response.status == 404){
         document.querySelector(".error").style.display = "block";
@@ -47,8 +49,11 @@ async function checkWeather(city){
     else if(data.weather[0].main == "Mist"){
         weatherIcon.src = "images/mist.png";
     }
-
+    
     document.querySelector(".weather").style.display = "block";
+
+    // Making the searchBox's value empty once searched
+    searchBox.value = "";
 
 }
 
